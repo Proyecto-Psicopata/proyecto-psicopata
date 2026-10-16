@@ -53,11 +53,21 @@
             font-size: 0.75rem;
             font-weight: bold;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* FOTO PRINCIPAL / PORTADA */
+        .subject-image {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            filter: grayscale(30%) contrast(110%);
         }
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin: 10px 0 5px 0;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -74,7 +84,7 @@
             font-size: 0.9rem;
             letter-spacing: 1.5px;
             margin-top: 25px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             border-left: 3px solid var(--accent-red);
             padding-left: 8px;
@@ -134,13 +144,18 @@
     <div class="container">
         <div class="header">
             <div class="status-badge">ACCESO CLÍNICO RESTRINGIDO</div>
+           
+            <!-- Fotografía de Sujeto 001 -->
+            <img src="sujeto001.jpg" alt="Sujeto 001 - Proyecto Psicópata" class="subject-image">
+
             <h1>PROYECTO PSICÓPATA</h1>
             <p class="subtitle">EVALUACIÓN DE RETENCIÓN AUDITIVA // SUJETO 001</p>
         </div>
 
-        <div class="section-title">[ EXPEDIENTE DE AUDIO ]</div>
+        <!-- SECCIÓN DE DESCRIPCIÓN DEL PROYECTO -->
+        <div class="section-title">[ EXPEDIENTE GENERAL // MANIFIESTO ]</div>
         <div class="lore-box">
-            ESTADO: Transmisión activa de frecuencias de prueba. Se monitorea la respuesta neuro-auditiva ante estímulos de distorsión y dinámicas de alta presión.
+            <strong>PROYECTO PSICÓPATA</strong> es una propuesta musical independiente de <strong>rock alternativo</strong>. Centrado en la figura conceptual de <strong>Sujeto 001</strong>, el proyecto explora la disonancia cognitiva, las tensiones de la sociedad digital y el aislamiento a través de composiciones crudas, guitarras distorsionadas y un marcado contraste dinámico.
         </div>
 
         <div class="section-title">[ TRANSMISIÓN OFICIAL ]</div>
@@ -152,7 +167,7 @@
 
         <div class="section-title">[ REGISTROS VISUALES Y REDES ]</div>
         <div class="btn-group">
-            <a href="#" class="btn" target="_blank">TIKTOK // TEASERS CLINICOS</a>
+            <a href="#" class="btn" target="_blank">TIKTOK // TEASERS CLÍNICOS</a>
             <a href="#" class="btn" target="_blank">INSTAGRAM // EXPEDIENTES</a>
         </div>
 
@@ -164,5 +179,3 @@
 
 </body>
 </html>
-
- 

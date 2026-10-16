@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROYECTO PSICÓPATA // EXPEDIENTE CLÍNICO</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #121212;
+            --accent-red: #ff1e27;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --border-color: #222222;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--accent-red);
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(255, 30, 39, 0.15);
+            border-radius: 4px;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: rgba(255, 30, 39, 0.2);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin: 10px 0 5px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .section-title {
+            color: var(--accent-red);
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--accent-red);
+            padding-left: 8px;
+        }
+
+        .lore-box {
+            background-color: #000000;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            display: block;
+            background-color: #1a1a1a;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 14px 20px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-red);
+            color: #ffffff;
+            border-color: var(--accent-red);
+            box-shadow: 0 0 10px rgba(255, 30, 39, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="status-badge">ACCESO CLÍNICO RESTRINGIDO</div>
+            <h1>PROYECTO PSICÓPATA</h1>
+            <p class="subtitle">EVALUACIÓN DE RETENCIÓN AUDITIVA // SUJETO 001</p>
+        </div>
+
+        <div class="section-title">[ EXPEDIENTE DE AUDIO ]</div>
+        <div class="lore-box">
+            ESTADO: Transmisión activa de frecuencias de prueba. Se monitorea la respuesta neuro-auditiva ante estímulos de distorsión y dinámicas de alta presión.
+        </div>
+
+        <div class="section-title">[ TRANSMISIÓN OFICIAL ]</div>
+        <div class="btn-group">
+            <a href="#" class="btn" target="_blank">ESCUCHAR EN SPOTIFY</a>
+            <a href="#" class="btn" target="_blank">VER CANAL OFICIAL EN YOUTUBE</a>
+            <a href="#" class="btn" target="_blank">ESCUCHAR EN APPLE MUSIC</a>
+        </div>
+
+        <div class="section-title">[ REGISTROS VISUALES Y REDES ]</div>
+        <div class="btn-group">
+            <a href="#" class="btn" target="_blank">TIKTOK // TEASERS CLINICOS</a>
+            <a href="#" class="btn" target="_blank">INSTAGRAM // EXPEDIENTES</a>
+        </div>
+
+        <div class="footer">
+            EXPEDIENTE N° 001 — PROYECTO PSICÓPATA &copy; 2026<br>
+            TODOS LOS DERECHOS RESERVADOS.
+        </div>
+    </div>
+
+</body>
+</html>
+
+ 

@@ -1,234 +1,232 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROYECTO PSICÓPATA // EXPEDIENTE CLÍNICO</title>
-    <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --card-bg: #121212;
-            --accent-red: #ff1e27;
-            --text-main: #e0e0e0;
-            --text-muted: #888888;
-            --border-color: #222222;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROYECTO PSICÓPATA — BASE DE DATOS</title>
+  <style>
+    :root {
+      --bg-color: #050505;
+      --card-bg: #0d0d0d;
+      --accent-color: #00B209;
+      --text-color: #e0e0e0;
+      --dim-text: #888888;
+      --border-color: #1f291d;
+      --font-mono: 'Courier New', Courier, monospace;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .container {
-            max-width: 650px;
-            width: 100%;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-top: 4px solid var(--accent-red);
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(255, 30, 39, 0.15);
-            border-radius: 4px;
-        }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-mono);
+      line-height: 1.6;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
 
-        .header {
-            text-align: center;
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 25px;
-        }
+    .container {
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
 
-        .status-badge {
-            display: inline-block;
-            background-color: rgba(255, 30, 39, 0.2);
-            color: var(--accent-red);
-            border: 1px solid var(--accent-red);
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
+    /* EFECTO ESCÁNER / TERMINAL */
+    .terminal-box {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-color);
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 178, 9, 0.05);
+    }
 
-        /* FOTO PRINCIPAL / PORTADA */
-        .subject-image {
-            width: 100%;
-            max-height: 380px;
-            object-fit: cover;
-            border: 1px solid var(--border-color);
-            margin-bottom: 20px;
-            filter: grayscale(30%) contrast(110%);
-        }
+    .status-ticker {
+      color: var(--accent-color);
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
 
-        h1 {
-            font-size: 1.6rem;
-            margin: 10px 0 5px 0;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+    h1 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin: 0;
-        }
+    p {
+      color: var(--dim-text);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
 
-        .section-title {
-            color: var(--accent-red);
-            font-size: 0.9rem;
-            letter-spacing: 1.5px;
-            margin-top: 25px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            border-left: 3px solid var(--accent-red);
-            padding-left: 8px;
-        }
+    /* CONTENEDOR VIDEO RESPONSIVO */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background-color: #000;
+      margin-top: 10px;
+    }
 
-        .lore-box {
-            background-color: #000000;
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: #b0b0b0;
-            margin-bottom: 20px;
-        }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
 
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 15px;
-        }
+    /* SECCIÓN AUDIO / TRACKS */
+    .track-card {
+      background: #080808;
+      border: 1px solid var(--border-color);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-        .btn {
-            display: block;
-            background-color: #1a1a1a;
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 14px 20px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
+    .track-title {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
 
-        .btn:hover {
-            background-color: var(--accent-red);
-            color: #ffffff;
-            border-color: var(--accent-red);
-            box-shadow: 0 0 10px rgba(255, 30, 39, 0.4);
-        }
+    .track-sub {
+      color: var(--accent-color);
+      font-size: 0.8rem;
+    }
 
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.75rem;
-        }
-    </style>
+    /* BOTONES */
+    .btn-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 12px 20px;
+      background-color: transparent;
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: var(--accent-color);
+      color: #000;
+      box-shadow: 0 0 10px rgba(0, 178, 9, 0.4);
+    }
+
+    .btn-primary {
+      background-color: var(--accent-color);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background-color: #00e00b;
+      box-shadow: 0 0 15px rgba(0, 178, 9, 0.6);
+    }
+
+    footer {
+      text-align: center;
+      color: #444;
+      font-size: 0.75rem;
+      margin-top: 20px;
+      padding-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="header">
-            <div class="status-badge">ACCESO CLÍNICO RESTRINGIDO</div>
-           
-            <!-- Fotografía de Sujeto 001 -->
-            <img src="sujeto001.jpg" alt="Sujeto 001 - Proyecto Psicópata" class="subject-image">
-
-            <h1>PROYECTO PSICÓPATA</h1>
-            <p class="subtitle">EVALUACIÓN DE RETENCIÓN AUDITIVA // SUJETO 001</p>
-        </div>
-
-       <!-- SECCIÓN MANIFIESTO / EXPEDIENTE -->
-<section id="manifiesto" class="section-manifesto">
   <div class="container">
-   
-    <div class="manifesto-card">
-      <!-- Encabezado de Expediente -->
-      <div class="card-header">
-        <span class="classification-tag">[ CLASIFICADO / EXPEDIENTE ]</span>
-        <h2 class="section-title">MANIFIESTO: PROYECTO PSICÓPATA</h2>
-      </div>
 
-      <!-- Cita Principal / Quote -->
-      <blockquote class="highlight-quote">
-        "La cultura popular vendió la psicopatía como caos y violencia. La realidad es más fría: es manipulación, frialdad y ausencia de empatía calculada."
-      </blockquote>
+    <!-- BLOQUE 1: ENCABEZADO DE ALERTA -->
+    <div class="terminal-box">
+      <div class="status-ticker">[ ESTADO: SEÑAL INTERCEPTADA // ARCHIVO 001 ]</div>
+      <h1>PROYECTO PSICÓPATA</h1>
+      <p>> "Lo que estás por presenciar no es un error de transmisión. Es el registro de una transformación."</p>
+    </div>
 
-      <!-- Cuerpo del Texto -->
-      <div class="manifesto-text">
-        <p>
-          <strong>Proyecto Psicópata</strong> es un espejo de la sociedad actual: un sistema que exige desensibilización, aislamiento y control silencioso.
-        </p>
-       
-        <p>
-          <strong>Sujeto 001</strong> no es un personaje de ficción; es el espécimen cero de este laboratorio social. Su música no busca entretener, sino registrar en frecuencias la distorsión de una mente bajo observación constante.
-        </p>
-
-        <p class="callout-text">
-          Bienvenido al archivo. Quien escucha, ingresa al experimento.
-        </p>
-      </div>
-
-      <!-- Ficha de Estatus del Sujeto -->
-      <div class="subject-status-bar">
-        <div class="status-field">
-          <span class="field-label">EXPEDIENTE:</span>
-          <span class="field-value status-active">ACTIVO</span>
-        </div>
-        <div class="status-field">
-          <span class="field-label">SUJETO:</span>
-          <span class="field-value">001</span>
-        </div>
-        <div class="status-field">
-          <span class="field-label">ESTADO:</span>
-          <span class="field-value">EN OBSERVACIÓN</span>
-        </div>
+    <!-- BLOQUE 2: NÚCLEO DEL SISTEMA (VIDEO) -->
+    <div class="terminal-box">
+      <div class="status-ticker">[ REPRODUCTOR DE TRANSMISIÓN ]</div>
+      <p>Sujeto 001: Registro clínico de adaptación y respuesta sonora.</p>
+     
+      <div class="video-container">
+        <!-- Reemplaza TU_ID_DE_VIDEO por el ID real de tu video de YouTube -->
+        <iframe
+          src="https://www.youtube.com/watch?v=y5izjOBUkcY"
+          title="Proyecto Psicópata - Archivo 001"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
+
+    <!-- BLOQUE 3: ESTACIÓN DE SONIDO (FRECUENCIA PRINCIPAL) -->
+    <div class="terminal-box">
+      <div class="status-ticker">[ REGISTRO SONORO MÁSTER ]</div>
+     
+      <div class="track-card">
+        <div>
+          <div class="track-title">AMANTE VIRTUAL</div>
+          <div class="track-sub">Sencillo Oficial — Mezcla & Máster Industrial</div>
+        </div>
+        <!-- Pon aquí el link a tu canción en Spotify -->
+        <a href="https://open.spotify.com/track/3vNSY0g4cij3pahSamWPd0?si=WUD82eJtTQyvpNPYd19r9g&utm_source=whatsapp" target="_blank" class="btn">ESCUCHAR EN SPOTIFY</a>
+      </div>
+    </div>
+
+    <!-- BLOQUE 4: CANAL DE INFILTRACIÓN (CTA Y SUSCRIPCIÓN) -->
+    <div class="terminal-box" style="text-align: center;">
+      <div class="status-ticker">[ ACCESO CONTINUO ]</div>
+      <p style="color: #fff; margin-bottom: 20px;">Únete a la base de datos para recibir nuevas transmisiones y expedientes antes de su liberación pública.</p>
+     
+      <div class="btn-group">
+        <!-- Pon aquí el link a tu canal de YouTube -->
+        <a href="https://www.youtube.com/@ProyectoPsic%C3%B3pataOficial" target="_blank" class="btn btn-primary">[ SUSCRIBIRSE EN YOUTUBE ]</a>
+        <!-- Pon aquí el link a tu Spotify -->
+        <a href="https://open.spotify.com/intl-es/artist/1Y2ZYqbU3rkpHQ9GBg8zur" target="_blank" class="btn">[ SEGUIR EN SPOTIFY ]</a>
+      </div>
+    </div>
+ <div class="terminal-box" style="text-align: center;">
+  <div class="status-ticker">[ DOCUMENTACIÓN NARRATIVA ]</div>
+  <p>¿Deseas profundizar en los principios del sistema?</p>
+  <a href="manifiesto.html" class="btn">[ CONSULTAR EL MANIFIESTO ]</a>
+</div>
+    <footer>
+      PROYECTO PSICÓPATA © 2026 // SISTEMA DE TRANSMISIÓN CLANDESTINO
+    </footer>
 
   </div>
-</section>
 
-        <div class="section-title">[ TRANSMISIÓN OFICIAL ]</div>
-        <div class="btn-group">
-        <div style="text-align: center; margin: 20px 0;">
-  <a href="https://open.spotify.com/intl-es/artist/1Y2ZYqbU3rkpHQ9GBg8zur" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: #111111; color: #ffffff !important; border: 2px solid #1db954; padding: 15px 30px; font-family: 'Courier New', Courier, monospace; font-size: 1rem; font-weight: bold; letter-spacing: 2px; text-decoration: none; border-radius: 4px;">
-    🎧 ESCUCHAR EN SPOTIFY
-</a>
-</div>
-            <div style="text-align: center; margin: 20px 0;">
-  <a href="https://www.youtube.com/@ProyectoPsic%C3%B3pataOficial" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: #111111; color: #ffffff !important; border: 2px solid #ff0000; padding: 15px 30px; font-family: 'Courier New', Courier, monospace; font-size: 1rem; font-weight: bold; letter-spacing: 2px; text-decoration: none; border-radius: 4px;">
-    ▶️ VER EN YOUTUBE
-  </a>
-</div>
-        </div>
-
-        <div class="section-title">[ REGISTROS VISUALES Y REDES ]</div>
-        <div class="btn-group">
-            <a href="https://www.tiktok.com/@proyectopsicopataoficial?lang=es" class="btn" target="_blank">TIKTOK // TEASERS CLÍNICOS</a>
-            <a href="https://www.instagram.com/proyecto.psicopata.oficial/" class="btn" target="_blank">INSTAGRAM // EXPEDIENTES</a>
-        </div>
-
-        <div class="footer">
-            EXPEDIENTE N° 001 — PROYECTO PSICÓPATA &copy; 2026<br>
-            TODOS LOS DERECHOS RESERVADOS.
-        </div>
-    </div>
-<script data-goatcounter="https://proyectopsicopata.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
